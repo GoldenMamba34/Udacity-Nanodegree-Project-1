@@ -1,6 +1,8 @@
 import React from 'react'
 // import * as BooksAPI from './BooksAPI'
 import './App.css'
+import Bookshelf from './Components.js'
+import Book from './Components.js'
 
 class BooksApp extends React.Component {
   state = {
@@ -44,7 +46,9 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               <div>
-                <div className="bookshelf">
+                
+          <Bookshelf title="Shelf One" books={[<Book bookCoverURL="https://fsmedia.imgix.net/e6/47/f6/cb/ef8a/4061/9933/67f289f37854/black-footed-cat-featured-in-bbcs-big-cats.png?rect=0%2C59%2C975%2C488&dpr=2&auto=format%2Ccompress&w=650" title="Cats" author="The Author"/>, <Book bookCoverURL="https://fsmedia.imgix.net/e6/47/f6/cb/ef8a/4061/9933/67f289f37854/black-footed-cat-featured-in-bbcs-big-cats.png?rect=0%2C59%2C975%2C488&dpr=2&auto=format%2Ccompress&w=650" title="Cats" author="The Author"/>, <Book bookCoverURL="https://fsmedia.imgix.net/e6/47/f6/cb/ef8a/4061/9933/67f289f37854/black-footed-cat-featured-in-bbcs-big-cats.png?rect=0%2C59%2C975%2C488&dpr=2&auto=format%2Ccompress&w=650" title="Cats" author="The Author"/>]}/>
+                {/* <div className="bookshelf">
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books">
                     <ol className="books-grid">
@@ -190,7 +194,9 @@ class BooksApp extends React.Component {
                       </li>
                     </ol>
                   </div>
-                </div>
+                </div> */}
+
+
               </div>
             </div>
             <div className="open-search">
