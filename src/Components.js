@@ -1,5 +1,24 @@
 import React from "react";
 
+
+export class SuperBookshelf extends React.Component {
+  state = {
+      bookPlacement: { currentlyReading: [], wantToRead: [], read: [] }
+  }
+  render() {
+    return (
+<div>
+      {this.props.bookshelves &&
+        this.props.bookshelves.map(function(bookshelf) {
+          return <span key={bookshelf.title}>{bookshelf}</span>;
+        })}
+      </div>
+    )
+  }
+}
+
+
+
 export class Bookshelf extends React.Component {
   render() {
     return (
@@ -12,7 +31,6 @@ export class Bookshelf extends React.Component {
               this.props.books.map(function(book) {
                 return <li key={book.title}>{book}</li>;
               })}
-            {/* {console.log(Object.prototype.toString.call(this.props.books))} */}
           </ol>
         </div>
       </div>
@@ -20,7 +38,40 @@ export class Bookshelf extends React.Component {
   }
 }
 
+class BookShelfChanger extends React.Component {
+  constructor(props) {
+  super(props);
+  this.handleChange = this.handleChange.bind(this);
+}
+  state = {
+    currentShelf: ""
+  };
+  handleChange(event) {
+  this.setState({currentShelf: event.target.value});
+}
+
+  render() {
+    return (
+      <div className="book-shelf-changer">
+        <select value={this.state.value} onChange={this.handleChange}>
+          <option value="move" disabled>
+            Move to...
+          </option>
+          <option value="currentlyReading">Currently Reading</option>
+          <option value="wantToRead">Want to Read</option>
+          <option value="read">Read</option>
+          <option value="none">None</option>
+        </select>
+      </div>
+    );
+  }
+}
+
 export class Book extends React.Component {
+  state = {
+    whichShelf: ""
+  };
+
   render() {
     return (
       <div className="book">
@@ -33,17 +84,7 @@ export class Book extends React.Component {
               backgroundImage: `url(${this.props.bookCoverURL})`
             }}
           />
-          <div className="book-shelf-changer">
-            <select>
-              <option value="move" disabled>
-                Move to...
-              </option>
-              <option value="currentlyReading">Currently Reading</option>
-              <option value="wantToRead">Want to Read</option>
-              <option value="read">Read</option>
-              <option value="none">None</option>
-            </select>
-          </div>
+          <BookShelfChanger/>
         </div>
         <div className="book-title">{this.props.title}</div>
         <div className="book-authors">{this.props.author}</div>
