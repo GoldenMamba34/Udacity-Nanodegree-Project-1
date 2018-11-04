@@ -1,6 +1,6 @@
 import React from "react";
 
-class Bookshelf extends React.Component {
+export class Bookshelf extends React.Component {
   render() {
     return (
       <div className="bookshelf">
@@ -8,16 +8,11 @@ class Bookshelf extends React.Component {
 
         <div className="bookshelf-books">
           <ol className="books-grid">
-
-
-
-            {/* {this.props.books.map(book => (
-              <li>{book}</li>
-            ))} */}
-
-
-
-
+            {this.props.books &&
+              this.props.books.map(function(book) {
+                return <li key={book.title}>{book}</li>;
+              })}
+            {/* {console.log(Object.prototype.toString.call(this.props.books))} */}
           </ol>
         </div>
       </div>
@@ -25,7 +20,7 @@ class Bookshelf extends React.Component {
   }
 }
 
-class Book extends React.Component {
+export class Book extends React.Component {
   render() {
     return (
       <div className="book">
@@ -57,6 +52,5 @@ class Book extends React.Component {
   }
 }
 
-
-
-export default (Bookshelf, Book);
+// WEBPACK FOOTER //
+// src/Components.js

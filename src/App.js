@@ -1,8 +1,7 @@
-import React from 'react'
+import React from "react";
 // import * as BooksAPI from './BooksAPI'
-import './App.css'
-import Bookshelf from './Components.js'
-import Book from './Components.js'
+import "./App.css";
+import {Book, Bookshelf} from "./Components.js";
 
 class BooksApp extends React.Component {
   state = {
@@ -13,7 +12,7 @@ class BooksApp extends React.Component {
      * pages, as well as provide a good URL they can bookmark and share.
      */
     showSearchPage: false
-  }
+  };
 
   render() {
     return (
@@ -21,7 +20,12 @@ class BooksApp extends React.Component {
         {this.state.showSearchPage ? (
           <div className="search-books">
             <div className="search-books-bar">
-              <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
+              <a
+                className="close-search"
+                onClick={() => this.setState({ showSearchPage: false })}
+              >
+                Close
+              </a>
               <div className="search-books-input-wrapper">
                 {/*
                   NOTES: The search from BooksAPI is limited to a particular set of search terms.
@@ -31,12 +35,11 @@ class BooksApp extends React.Component {
                   However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
                   you don't find a specific author or title. Every search is limited by search terms.
                 */}
-                <input type="text" placeholder="Search by title or author"/>
-
+                <input type="text" placeholder="Search by title or author" />
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid"></ol>
+              <ol className="books-grid" />
             </div>
           </div>
         ) : (
@@ -46,8 +49,68 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               <div>
-                
-          <Bookshelf title="Shelf One" books={[<Book bookCoverURL="https://fsmedia.imgix.net/e6/47/f6/cb/ef8a/4061/9933/67f289f37854/black-footed-cat-featured-in-bbcs-big-cats.png?rect=0%2C59%2C975%2C488&dpr=2&auto=format%2Ccompress&w=650" title="Cats" author="The Author"/>, <Book bookCoverURL="https://fsmedia.imgix.net/e6/47/f6/cb/ef8a/4061/9933/67f289f37854/black-footed-cat-featured-in-bbcs-big-cats.png?rect=0%2C59%2C975%2C488&dpr=2&auto=format%2Ccompress&w=650" title="Cats" author="The Author"/>, <Book bookCoverURL="https://fsmedia.imgix.net/e6/47/f6/cb/ef8a/4061/9933/67f289f37854/black-footed-cat-featured-in-bbcs-big-cats.png?rect=0%2C59%2C975%2C488&dpr=2&auto=format%2Ccompress&w=650" title="Cats" author="The Author"/>]}/>
+                <Bookshelf
+                  title="Want to Read"
+                  books={[
+                    <Book
+                      bookCoverURL="http://books.google.com/books/content?id=wrOQLV6xB-wC&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE72G3gA5A-Ka8XjOZGDFLAoUeMQBqZ9y-LCspZ2dzJTugcOcJ4C7FP0tDA8s1h9f480ISXuvYhA_ZpdvRArUL-mZyD4WW7CHyEqHYq9D3kGnrZCNiqxSRhry8TiFDCMWP61ujflB&source=gbs_api"
+                      title="1776"
+                      author="David McCullough"
+                    />,
+                    <Book
+                      bookCoverURL="https://fsmedia.imgix.net/e6/47/f6/cb/ef8a/4061/9933/67f289f37854/black-footed-cat-featured-in-bbcs-big-cats.png?rect=0%2C59%2C975%2C488&dpr=2&auto=format%2Ccompress&w=650"
+                      title="Cats"
+                      author="The Author"
+                    />,
+                    <Book
+                      bookCoverURL="https://fsmedia.imgix.net/e6/47/f6/cb/ef8a/4061/9933/67f289f37854/black-footed-cat-featured-in-bbcs-big-cats.png?rect=0%2C59%2C975%2C488&dpr=2&auto=format%2Ccompress&w=650"
+                      title="Cats"
+                      author="The Author"
+                    />
+                  ]}
+                />
+
+                <Bookshelf
+                  title="Shelf One"
+                  books={[
+                    <Book
+                      bookCoverURL="https://fsmedia.imgix.net/e6/47/f6/cb/ef8a/4061/9933/67f289f37854/black-footed-cat-featured-in-bbcs-big-cats.png?rect=0%2C59%2C975%2C488&dpr=2&auto=format%2Ccompress&w=650"
+                      title="Cats"
+                      author="The Author"
+                    />,
+                    <Book
+                      bookCoverURL="https://fsmedia.imgix.net/e6/47/f6/cb/ef8a/4061/9933/67f289f37854/black-footed-cat-featured-in-bbcs-big-cats.png?rect=0%2C59%2C975%2C488&dpr=2&auto=format%2Ccompress&w=650"
+                      title="Cats"
+                      author="The Author"
+                    />,
+                    <Book
+                      bookCoverURL="https://fsmedia.imgix.net/e6/47/f6/cb/ef8a/4061/9933/67f289f37854/black-footed-cat-featured-in-bbcs-big-cats.png?rect=0%2C59%2C975%2C488&dpr=2&auto=format%2Ccompress&w=650"
+                      title="Cats"
+                      author="The Author"
+                    />
+                  ]}
+                />
+                <Bookshelf
+                  title="Shelf One"
+                  books={[
+                    <Book
+                      bookCoverURL="https://fsmedia.imgix.net/e6/47/f6/cb/ef8a/4061/9933/67f289f37854/black-footed-cat-featured-in-bbcs-big-cats.png?rect=0%2C59%2C975%2C488&dpr=2&auto=format%2Ccompress&w=650"
+                      title="Cats"
+                      author="The Author"
+                    />,
+                    <Book
+                      bookCoverURL="https://fsmedia.imgix.net/e6/47/f6/cb/ef8a/4061/9933/67f289f37854/black-footed-cat-featured-in-bbcs-big-cats.png?rect=0%2C59%2C975%2C488&dpr=2&auto=format%2Ccompress&w=650"
+                      title="Cats"
+                      author="The Author"
+                    />,
+                    <Book
+                      bookCoverURL="https://fsmedia.imgix.net/e6/47/f6/cb/ef8a/4061/9933/67f289f37854/black-footed-cat-featured-in-bbcs-big-cats.png?rect=0%2C59%2C975%2C488&dpr=2&auto=format%2Ccompress&w=650"
+                      title="Cats"
+                      author="The Author"
+                    />
+                  ]}
+                />
+
                 {/* <div className="bookshelf">
                   <h2 className="bookshelf-title">Currently Reading</h2>
                   <div className="bookshelf-books">
@@ -195,18 +258,18 @@ class BooksApp extends React.Component {
                     </ol>
                   </div>
                 </div> */}
-
-
               </div>
             </div>
             <div className="open-search">
-              <a onClick={() => this.setState({ showSearchPage: true })}>Add a book</a>
+              <a onClick={() => this.setState({ showSearchPage: true })}>
+                Add a book
+              </a>
             </div>
           </div>
         )}
       </div>
-    )
+    );
   }
 }
 
-export default BooksApp
+export default BooksApp;
