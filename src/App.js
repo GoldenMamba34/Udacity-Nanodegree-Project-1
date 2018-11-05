@@ -11,7 +11,7 @@ class BooksApp extends React.Component {
      * users can use the browser's back and forward buttons to navigate between
      * pages, as well as provide a good URL they can bookmark and share.
      */
-    showSearchPage: false,
+    showSearchPage: false
   };
 
   render() {
@@ -49,7 +49,8 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               <SuperBookshelf
-                bookshelves={[
+                key="superBookshelf"
+                currentlyReading={
                   <Bookshelf
                     key="Currently Reading"
                     title="Currently Reading"
@@ -65,7 +66,9 @@ class BooksApp extends React.Component {
                         author="Orson Scott Card"
                       />
                     ]}
-                  />,
+                  />
+                }
+                wantToRead={
                   <Bookshelf
                     key="Want to Read"
                     title="Want to Read"
@@ -81,7 +84,9 @@ class BooksApp extends React.Component {
                         author="The Author"
                       />
                     ]}
-                  />,
+                  />
+                }
+                read={
                   <Bookshelf
                     key="Read"
                     title="Read"
@@ -103,7 +108,7 @@ class BooksApp extends React.Component {
                       />
                     ]}
                   />
-                ]}
+                }
               />
             </div>
             <div className="open-search">

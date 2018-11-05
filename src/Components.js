@@ -2,16 +2,19 @@ import React from "react";
 
 
 export class SuperBookshelf extends React.Component {
+
   state = {
-      bookPlacement: { currentlyReading: [], wantToRead: [], read: [] }
+      bookPlacement: { currentlyReading: [this.props.currentlyReading], wantToRead: [this.props.wantToRead], read: [this.props.read] }
   }
+
   render() {
     return (
 <div>
-      {this.props.bookshelves &&
-        this.props.bookshelves.map(function(bookshelf) {
-          return <span key={bookshelf.title}>{bookshelf}</span>;
-        })}
+
+  <span key={this.props.currentlyReading.title}>{this.state.bookPlacement.currentlyReading}</span>
+  <span key={this.props.wantToRead.title}>{this.state.bookPlacement.wantToRead}</span>
+    <span key={this.props.read.title}>{this.state.bookPlacement.read}</span>
+
       </div>
     )
   }
@@ -20,6 +23,9 @@ export class SuperBookshelf extends React.Component {
 
 
 export class Bookshelf extends React.Component {
+  state = {
+    books: this.props.books
+  }
   render() {
     return (
       <div className="bookshelf">
@@ -27,8 +33,8 @@ export class Bookshelf extends React.Component {
 
         <div className="bookshelf-books">
           <ol className="books-grid">
-            {this.props.books &&
-              this.props.books.map(function(book) {
+            {this.state.books &&
+              this.state.books.map(function(book) {
                 return <li key={book.title}>{book}</li>;
               })}
           </ol>
@@ -37,6 +43,9 @@ export class Bookshelf extends React.Component {
     );
   }
 }
+
+
+
 
 class BookShelfChanger extends React.Component {
   constructor(props) {
@@ -47,7 +56,10 @@ class BookShelfChanger extends React.Component {
     currentShelf: ""
   };
   handleChange(event) {
-  this.setState({currentShelf: event.target.value});
+  this.setState({currentShelf: event.target.value}, () => {
+      this.props.action(this.state.currentShelf)
+  });
+
 }
 
   render() {
@@ -62,15 +74,29 @@ class BookShelfChanger extends React.Component {
           <option value="read">Read</option>
           <option value="none">None</option>
         </select>
+
       </div>
+
     );
   }
 }
 
 export class Book extends React.Component {
-  state = {
-    whichShelf: ""
-  };
+  constructor(props) {
+    super(props)
+    this.childHandler = this.childHandler.bind(this)
+}
+childHandler(dataFromChild) {
+       // log our state before and after we updated it
+       this.setState({
+           whichShelf: dataFromChild
+       })
+   }
+
+state = {
+  whichShelf: ""
+};
+
 
   render() {
     return (
@@ -84,7 +110,7 @@ export class Book extends React.Component {
               backgroundImage: `url(${this.props.bookCoverURL})`
             }}
           />
-          <BookShelfChanger/>
+          <BookShelfChanger action={this.childHandler}/>
         </div>
         <div className="book-title">{this.props.title}</div>
         <div className="book-authors">{this.props.author}</div>
