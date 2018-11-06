@@ -10,13 +10,26 @@ export class SuperBookshelf extends React.Component {
   render() {
     return (
 <div>
-
+  <h2 className="bookshelf-title">{this.props.currentlyReading.title}</h2>
   <span key={this.props.currentlyReading.title}>{this.state.bookPlacement.currentlyReading}</span>
+    <h2 className="bookshelf-title">{this.props.wantToRead.title}</h2>
   <span key={this.props.wantToRead.title}>{this.state.bookPlacement.wantToRead}</span>
+    <h2 className="bookshelf-title">{this.props.read.title}</h2>
     <span key={this.props.read.title}>{this.state.bookPlacement.read}</span>
 
       </div>
     )
+  }
+  componentDidMount() {
+    console.log(this.state.bookPlacement.currentlyReading[0])
+  }
+
+  moveBook = function (book, newShelf, currentShelf) {
+  // this.bookPlacement[currentShelf]
+      // find book in bookplacement and remove it
+      //
+      //  change the state where the new shelf it is to include it
+
   }
 }
 
@@ -43,7 +56,6 @@ export class Bookshelf extends React.Component {
     );
   }
 }
-
 
 
 
@@ -90,6 +102,8 @@ childHandler(dataFromChild) {
        // log our state before and after we updated it
        this.setState({
            whichShelf: dataFromChild
+       }, () => {
+           // console.log(this.state)
        })
    }
 
